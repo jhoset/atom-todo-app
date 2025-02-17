@@ -1,0 +1,31 @@
+<h2 mat-dialog-title>{{ !data ? 'Create Note' : 'Edit Note' }}</h2>
+<mat-dialog-content class="mat-typography">
+  <form class="flex flex-col my-2">
+    <mat-form-field class="example-full-width">
+      <mat-label>Title</mat-label>
+      <input [formControl]="titleControl" type="text" matInput placeholder="">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Description</mat-label>
+      <textarea [formControl]="descriptionControl" style="resize: none" [rows]="4" matInput
+                placeholder="Ex. It makes me feel..."></textarea>
+    </mat-form-field>
+
+    <mat-radio-group [formControl]="completedControl" aria-label="Status">
+      <mat-radio-button [value]="false">Pending</mat-radio-button>
+      <mat-radio-button [value]="true">Completed</mat-radio-button>
+    </mat-radio-group>
+
+  </form>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button (click)="onClose()" mat-stroked-button>Cancel</button>
+  <button [disabled]="taskFormGroup.invalid" (click)="onSave()" mat-flat-button color="primary">
+    <div class="flex items-center gap-2">
+      Save
+    </div>
+  </button>
+</mat-dialog-actions>
+<app-loader [loading]="loading"></app-loader>

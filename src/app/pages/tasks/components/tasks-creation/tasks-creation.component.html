@@ -1,0 +1,26 @@
+<form class="flex gap-4 my-2 w-full">
+  <div class="flex flex-col w-full">
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input [formControl]="titleControl" type="text" matInput placeholder="">
+    </mat-form-field>
+    <mat-form-field class="w-full">
+      <mat-label>Description</mat-label>
+      <textarea [formControl]="descriptionControl" style="resize: none" [rows]="1" matInput
+                placeholder="Ex. It makes me feel..."></textarea>
+    </mat-form-field>
+    <mat-radio-group [formControl]="completedControl" aria-label="Status">
+      <mat-radio-button [value]="false">Pending</mat-radio-button>
+      <mat-radio-button [value]="true">Completed</mat-radio-button>
+    </mat-radio-group>
+    <app-loader [loading]="loading"></app-loader>
+    <button [disabled]="loading || invalidForm" (click)="onAddNote()" color="primary" mat-flat-button class="mt-6 flex items-center gap-2 mb-[22px] w-fit">
+      <mat-icon class="example-tab-icon">add</mat-icon>
+      Add Task
+    </button>
+  </div>
+
+
+
+
+</form>

@@ -1,0 +1,22 @@
+<h2 mat-dialog-title>Register</h2>
+<mat-dialog-content class="mat-typography">
+  <p class="text-justify"> There's not an existing user with the email provided. To create a new user, please make sure your email is correct and click on the register button</p>
+  <div class="grid gap-2 mx-4">
+    <form class="flex flex-col my-2" (ngSubmit)="onRegister()">
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input [formControl]="emailControl" type="email" matInput placeholder="Ex. pat@example.com">
+      </mat-form-field>
+    </form>
+  </div>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button (click)="onClose()" mat-stroked-button>Cancel</button>
+  <button (click)="onRegister()" mat-flat-button>
+    <div class="flex items-center gap-2">
+      Register
+    </div>
+  </button>
+</mat-dialog-actions>
+<app-loader [loading]="loading" ></app-loader>

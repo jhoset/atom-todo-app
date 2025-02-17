@@ -1,0 +1,35 @@
+<mat-card class="min-h-[204px] flex flex-col justify-between">
+  <mat-card-header class="flex flex-col h-full">
+    <mat-card-title> {{ task()?.title || 'N/A' }}</mat-card-title>
+    <mat-card-content>
+      <br>
+      <p>{{ task()?.description || 'N/A' }}</p>
+
+      <p>
+        @if (task()?.completed) {
+          <span
+            class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-gray-700 dark:text-green-400 border border-green-400">COMPLETED</span>
+        } @else {
+          <span
+            class="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-gray-700 dark:text-gray-400 border border-gray-500">PENDING</span>
+        }
+      </p>
+      <p class="text-[12px]">
+        Created At: {{ (task()?.createdAt | date) || 'N/A' }}
+      </p>
+    </mat-card-content>
+
+  </mat-card-header>
+  <mat-card-actions align="end">
+    <button (click)="onEdit()" mat-button matTooltip="Edit Note" color="primary">
+      <div class="flex items-center gap-2">
+        <mat-icon title="">edit</mat-icon>
+      </div>
+    </button>
+    <button (click)="onDelete()" mat-button matTooltip="Delete Note" color="warn">
+      <div class="flex items-center gap-2">
+        <mat-icon title="">delete</mat-icon>
+      </div>
+    </button>
+  </mat-card-actions>
+</mat-card>
